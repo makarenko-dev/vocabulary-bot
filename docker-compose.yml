@@ -1,0 +1,15 @@
+version: '3'
+networks:
+  db_network:
+    external: true
+services:
+  vocab_bot:
+    build: .
+    entrypoint: ["/usr/src/app/entrypoint.sh"]
+    command: python main.py
+    networks:
+      - db_network
+    env_file:
+      - ./.env
+volumes:
+  pgdata:
