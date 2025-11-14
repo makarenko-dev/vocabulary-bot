@@ -1,11 +1,37 @@
 # vocabulary-bot
-Telegram bot that acts as vocabulary. Used for studing Slovak language.
-Supports adding new words (auto translates), printing all saved words, quizing.
-OpenAI used for check spelling / translating during add phaze
+Telegram bot for storing and practicing Slovak vocabulary.
 
-## Build
-- Fill .env file (all variables can be found in settings.py)
+## Features
+
+### `/add <phrase>`
+Checks spelling and translates the phrase to English using OpenAI (diacritics not required).  
+Adds the phrase to vocabulary if not exists.
+
+Bot responses:
+
+\+ phaze - translation # added to vocabulary
+
+= phaze - translation # already exists
+
+### `/list`
+Shows the entire vocabulary with translations.
+
+### `/quiz`
+Starts an endless quiz mode.
+
+![Quiz example](imgs/quiz.png)
+
+## Setup
+1. Create and fill .env (See all variables in settings.py)
+2. Install dependencies:
 ```
-pip install -r requirements.txt
+   pip install -r requirements.txt
+```
+3. Run migrations:
+```
 alembic upgrade head
+```
+4. Run
+```
+python main.py
 ```
